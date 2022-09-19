@@ -1,10 +1,15 @@
-const router = require('express').Router();
-const htmlRoutes = require('./html/html-routes');
+const router = require("express").Router();
 
-router.use('/', htmlRoutes);
+//import all API routes from /api/index.js (index.js is not needed because it's implied)
+const apiRoutes = require("./api");
+const htmlRoutes = require("./html/html-routes");
+
+// add prefix of 'api' to all the api routes imported from the 'api' directory
+router.use("/api", apiRoutes);
+router.use("/", htmlRoutes);
 
 router.use((req, res) => {
-  res.status(404).send('<h1>😝 404 Error!</h1>');
+  res.status(404).send("<h1>😝 404 Error!</h1>");
 });
 
 module.exports = router;
