@@ -13,7 +13,10 @@ app.use(require("./routes"));
 
 //connect to the mongo db
 // connect()  - tells Mongoose which database we want to connect to
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/pizza-hunt");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/pizza-hunt", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 // Use this to log mongo queries being executed!
 mongoose.set("debug", true);
