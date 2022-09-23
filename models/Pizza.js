@@ -25,7 +25,7 @@ const PizzaSchema = new Schema(
       type: String,
       required: true,
       enum: ["Personal", "Small", "Medium", "Large", "Extra Large"],
-      default: "Large",dw
+      default: "Large",
     },
     toppings: [], // could be Aray instead of brackets to indicate type
     comments: [
