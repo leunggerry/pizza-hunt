@@ -25,8 +25,8 @@ const pizzaController = {
   getPizzaById({ params }, res) {
     Pizza.findOne({ _id: params.id })
       .populate({
-        path:"comments",
-        select: '-__v'
+        path: "comments",
+        select: "-__v",
       })
       //update the query to not get the __v field
       .select("-__v")
@@ -56,7 +56,7 @@ const pizzaController = {
   updatePizza({ params, body }, res) {
     // find single doc that we want to update
     // updateOne() or updateMany() update documents without returning them
-    Pizza.findOneAndUpdate({ _id: params.id }, body, { new: true })
+    Pizza.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
       // {new: true} will return the new version of the doc
       .then((dbPizzaData) => {
         if (!dbPizzaData) {
